@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B05_Switch.html</title>
+    <script>
+        const PI = 3.000014;
+        switch(PI){ //자바와 달리 실수도 올 수 있음
+            case 3.000000014:
+            case 3.00000014:
+            case 3.0000014:
+            case 3.000014:
+            case 3.014:
+            case 3.14: document.write('PI는 3.14다<br/>'); break;
+            default : document.write('PI는 3.14가 아니다<br/>'); break;
+        }
+
+        switch(10%2 == 0){ //자바는 모든 식이 올 수 있음
+            case true : document.write("true다<br/>"); break;
+            case false : document.write("false다<br/>"); break;
+        }
+
+        switch('자바'){ //자바o(JDK 7.0이후부터)
+            case '자스' : document.write("자스다<br/>"); break;
+            case '자바' : document.write("자바다<br/>"); break;
+            case '자브' : document.write("자브다<br/>"); break;
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

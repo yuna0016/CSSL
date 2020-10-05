@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B08_Function2.html</title>
+    <script>
+        var param = 100, args = 1;
+        console.log(window.param); //윈도우의 속성이 됨(전역변수)
+        function callByValue(param,args){//매개변수는 지역변수!
+            var temp = param;
+            param = args;
+            args = temp;
+            console.log('callByValue 함수 안 : param-s%,args-s%', param, args);
+        }
+        //함수 호출
+        callByValue(param, args);
+        console.log('callByValue 함수 밖 : param-s%,args-s%', param, args);
+
+        //CallByReference] - 참조에 의한 호출. 값이아닌 객체의 주소 전달
+        var array = [100,1];
+
+        var callByRef = function(arr){
+            var temp = arr[0];
+            arr[0] = arr[1];
+            arr[1] = temp;
+            console.log('callByRef 함수 안 : arr[0]-s%,arr[1]-s%', arr[0], arr[1]);
+        }
+        //함수 호출
+        callByRef(array);
+        console.log('callByRef 함수 밖 : arr[0]-s%,arr[1]-s%', array[0], array[1]);
+
+        //지역변수, 전역변수 충돌시 지역변수가 우선
+        var mVar = 100;//전역변수
+        function conflict(mVar){ //매개변수=지역변수
+            console.log(this); //여기서의 this는 함수를 호출하는 애=>window객체
+            //mVar = mVar*2; //매개변수 = 매개변수*2
+            this.mVar = mVar*2;
+            console.log('함수 안 mVar:', mVar);
+        }
+        window.conflict(mVar);
+        console.log('함수 밖 mVar:', mVar);
+
+        //참조에 의한 호출 예제]
+        var member = [];
+        function setMember(member){
+            for(var i=0 ; i<2 ; i++){
+                member.push(prompt(i+1+"번째 이름 입력?",""));
+                member.push(prompt(i+1+"번째 나이 입력?",""));
+                member.push(prompt(i+1+"번째 주소 입력?",""));
+            }
+        }
+        //함수 호출]
+        //setMember(member);
+        //출력;
+        member.forEach(function(item){
+            console.log(item);
+        });
+
+
+        //문1] 배열을 매개변수로 입력받아 배열을 크기순(큰값)으로 재정렬하는 함수를 정의하고 호출하여 결과를 출력하여라
+        var arr=[9,45,10,23,99,222,34,100,77,88];
+        //1] 함수 정의
+        function sort(arr){
+            for(var i=0 ; i<arr.length-1 ; i++){
+                for(var k=i+1 ; k<arr.length ; k++){
+                    if(arr[i] > arr[k]){
+                        var temp = arr[i];
+                        arr[i] = arr[k];
+                        arr[k] = temp;
+                    }
+                }
+            }
+        }
+        //2] 함수 호출
+        sort(arr);
+        //3] 출력
+        arr.forEach(function(item){
+            console.log(item);
+        });
+    </script>
+    
+</head>
+<body>
+
+</body>
+</html>

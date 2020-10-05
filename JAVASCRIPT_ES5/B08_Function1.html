@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B08_Function1.html</title>
+    <script>
+        /*
+        방법1] 함수 선언문 (유명함수)
+        function 함수명([매개변수1,매개변수2...]){ **var 사용 불가***
+            함수 할일 구현;
+            [return 변수or값;]
+            *return이후 명령문은 실행 안됨
+        }
+
+        방법2] 함수 표현식 (익명함수)
+        var 변수명 = function(){
+            함수 할일 구현;
+            [return 변수or값;]
+        }
+
+        방법3] 즉시 실행 함수
+        (function [함수명](){
+            [return 변수or값;]
+        })([매개변수1, 매개변수2...])
+
+
+        *함수안에서 선언된 변수는 지역변수.
+        *script태그 내 선언된 변수는 전역변수.
+        */
+
+        //함수 형식 1]
+        //함수정의 - 함수 선언문
+        function noParamNoReturn(){
+            document.write("=================== MENU ===================<br/>");
+            document.write("1.계속 2.나가기<br/>");
+            document.write("============================================<br/>");
+        }
+        document.write("noParamNoReturn의 자료형 : "+typeof noParamNoReturn+"<br/>");
+        document.write("noParamNoReturn : "+noParamNoReturn+"<br/>");
+        //함수 호출
+        noParamNoReturn();
+
+        //함수 형식 2]
+        //함수정의 - 함수 표현식
+        var yesParamNoReturn = function(start,end){
+            var total = 0; //지역 변수
+            for(var i=start ; i<=end ; i++){
+                total += i;
+            }
+            document.write(start+"부터 "+end+"까지 누적 합 : "+total+"<br/>");
+        }
+        document.write("yesParamNoReturn의 자료형 : "+typeof yesParamNoReturn+"<br/>");
+        document.write("yesParamNoReturn : "+yesParamNoReturn+"<br/>");
+        //함수 호출
+        yesParamNoReturn(1,10);
+        yesParamNoReturn(10,100);
+        
+        //유효 변수 범위 확인
+        //document.write("함수 안에서 선언된 변수 : total="+total+"<br/>");
+        //document.write("함수 안에서 선언된 변수 : i="+i+"<br/>");
+        //document.write("함수 안에서 선언된 변수 : start="+start+"<br/>");
+
+        //함수 형식 3]
+        var noParamYesReturn = function(){
+            var name = prompt('이름 입력?','');
+            var age = prompt('나이 입력?','');
+            return '이름 : '+name+', 나이 : '+age+"<br/>";
+            document.write("return 이후 출력문"); //실행 안됨. 자바는 unreachable code에러 발생,
+        };
+        //함수 호출
+        document.write(noParamYesReturn());
+
+        //함수 형식 4] **활용빈도 가장 높음
+        function yesParamYesReturn(num1,num2){
+            return num1>num2 ? num1 : num2;
+        }
+        //함수 호출
+        document.write("최댓값 : "+yesParamYesReturn(1,10)+"<br/>");
+
+        //즉시실행 함수
+        var plus = (function(num1, num2){return num1+num2;})(10,20);
+        document.write("plus의 자료형 : "+typeof plus+"<br/>"); //number
+        document.write(plus); //30
+
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

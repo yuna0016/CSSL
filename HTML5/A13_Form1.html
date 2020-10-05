@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form1</title>
+</head>
+<body>
+    <!-- 
+        form태그 : 사용자가 입력/선택한값을 서버로 전송\
+        <속성>
+        action : **생략시 현재 페이지를 다시 요청**
+        method : post방식(insert)/get방식(select)두가지만 샤용. 데이터 전송방식을 의미
+        
+        ***enctype : URL인코딩 방식 지정
+    -->
+    <div>
+        <h2> 데이터 전송하기 </h2>
+        <h3>get방식으로 요청</h3>
+        <form action = 'https://www.naver.com'>
+            아이디 : <input type="text", name="user"/>
+            비밀번호 : <input type="password", name="pass"/>
+            <input type="submit" value="로그인"/>
+        </form>
+
+        <h3>post방식으로 요청</h3>
+        <form action = 'https://www.naver.com' method="POST">
+            아이디 : <input type="text", name="user"/>
+            비밀번호 : <input type="password", name="pass"/>
+            <input type="submit" value="로그인"/>
+        </form>
+
+        <h3>action속성으로 (현재페이지 다시요청)/method 속성 생략-get방식</h3>
+        <form>
+            아이디 : <input type="text", name="user"/>
+            비밀번호 : <input type="password", name="pass"/>
+            전화번호 : <input type="tel", name="tel"/>
+            이메일 : <input type="email", name="email"/>
+            <input type="submit" value="로그인"/>
+        </form>
+
+        <h3>a태그로 데이터 전송(get방식)</h3>
+        <a href="https://www.naver.com?user=KIM&pass=9999">get방식</a>
+
+
+    </div>
+</body>
+</html>

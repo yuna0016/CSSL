@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>If.html</title>
+    <script>
+        /*비교식, 논리식 뿐만 아니라 모든식&모든값이 올 수 있다
+        0, null, false외 모든값은 true*/
+        var nullvar = null, num1 = num2 = 10;
+        if(nullvar) document.write('null은 true다<br/>');
+        else document.write('null은 false다<br/>');
+
+        if(num1-num2)//자바 불가능
+            document.write('num1-num2는 ture다<br/>');
+        else document.write('num1-num2는 false다<br/>');
+
+        //판단식이 참or거짓일때 결과값을 변수에 담지 않아도됨
+        num1>num2 ? document.write(num1+'은 '+num2+'보다 크다<br/>') : document.write(num1+'은 '+num2+'보다 크지않다<br/>') ; //자바 불가능
+        var result=num1>num2 ? num1+'은 '+num2+'보다 크다<br/>' : num1+'은 '+num2+'보다 크지않다<br/>';
+        document.write(result);
+    </script>
+</head>
+<body>
+    <fieldset>
+        <legend>성적 출력</legend>
+        국어 <input type="text" id="kor"/>
+        영어 <input type="text" id="eng"/>
+        수학 <input type="text" id="math"/>
+        <span id="span" style='color:violet; font-weight:bold;'>여기에 학점 출력</span>
+        <button onclick="getGrade()">확인</button>
+    </fieldset> 
+    <script>
+        //입력점수 얻기
+        var korInput = document.getElementById('kor');
+        var engInput = document.getElementById('eng');
+        var mathInput = document.getElementById('math');
+        //span태그 객체 얻기
+        var span = document.getElementById('span');
+        function getGrade(){
+            var kor = parseInt(korInput.value);
+            var eng = parseInt(engInput.value);
+            var math = parseInt(mathInput.value);
+            var avg = (kor+eng+math)/3;
+            if(avg>=90) span.innerHTML = "A 학점";
+            else if(avg>=80) span.innerHTML = "B 학점";
+            else if(avg>=70) span.innerHTML = "C 학점";
+            else if(avg>=60) span.innerHTML = "D 학점";
+            else span.innerHTML = "F 학점";
+            span.innerHTML += " : "+ avg;
+        }
+    </script>
+</body>
+</html>
